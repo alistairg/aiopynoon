@@ -8,5 +8,6 @@ Note that this API is not supported by Noon, and is subject to change or withdra
 
 __author__ = "Alistair Galbraith"
 __copyright__ = "Copyright 2020, Alistair Galbraith"
+__version__ = "0.0.1"
 
 from .noon import Noon
