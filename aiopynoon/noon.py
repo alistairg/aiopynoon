@@ -206,6 +206,8 @@ class Noon(object):
         changed_fields = change.get("fields", [])
         return await affected_entity.handle_update(changed_fields)
 
+    def get_entity(self, entity_id: Guid) -> NoonEntity:
+        return self._all_entities.get(entity_id, None)
 
     async def _refreshEndpoints(self):
         """Update the noon endpoints for this account"""

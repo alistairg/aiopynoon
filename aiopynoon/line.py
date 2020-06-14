@@ -2,7 +2,7 @@
 
 from .entity import NoonEntity
 import asyncio
-import typing
+from typing import Dict
 import logging
 
 from .const import Guid
@@ -105,6 +105,10 @@ class NoonLine(NoonEntity):
 
     @classmethod
     async def from_json(cls, noon, space, json):
+        """Construct a Line from a JSON payload."""
+
+        # Sanity - should be parsed
+        assert isinstance(json, Dict), "JSON is not parsed"
 
         """Basics"""
         guid = json.get("guid", None)

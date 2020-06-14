@@ -87,8 +87,8 @@ class NoonSpace(NoonEntity):
         if scene_id is not None:
             target_scene_id = scene_id
         elif scene_name is not None:
-            for (this_scene_id, this_scene_name) in self._scenes.items():
-                if this_scene_name == scene_name:
+            for (this_scene_id, this_scene) in self._scenes.items():
+                if this_scene.name == scene_name:
                     target_scene_id = this_scene_id
             if target_scene_id is None:
                 raise NoonInvalidParametersError("Scene '{}' not found".format(scene_name))

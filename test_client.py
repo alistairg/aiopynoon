@@ -7,6 +7,8 @@ from aiopynoon.line import ATTR_LINE_STATE, LINE_STATE_OFF, LINE_STATE_ON, NoonL
 from aiopynoon.space import ATTR_ACTIVE_SCENE, ATTR_LIGHTS_ON, NoonSpace
 from aiopynoon import Noon
 
+
+
 # Authenticate
 async def test_authentication(noon):
     result = await noon.authenticate()
@@ -275,17 +277,4 @@ async def test_close_eventstream(noon):
         
 
 
-@pytest.fixture(scope="session")
-async def noon(loop):
-    async with aiohttp.ClientSession() as session:
-        noon = Noon(session, "__username__", "__password__")
-        yield noon
-        if noon.event_stream_connected:
-            await noon.close_eventstream()
-            await asyncio.sleep(2)
 
-@pytest.fixture(scope="session")
-def loop():
-    loop = asyncio.get_event_loop()
-    yield loop
-    loop.close()
