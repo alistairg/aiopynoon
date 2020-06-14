@@ -1,0 +1,3 @@
+class NoonEvent(object):
+
+    pass
