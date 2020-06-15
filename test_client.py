@@ -235,13 +235,13 @@ async def test_space_change_scene_by_name(noon):
     context = "Context"
     callback = mock.AsyncMock()
     first_space.subscribe(callback, context=context)
-    current_scene_name = first_space.scenes[first_space.active_scene_id]
+    current_scene_name = first_space.scenes[first_space.active_scene_id].name
     target_scene_name = None
     target_scene_id = None
 
-    for scene_id, scene_name in first_space.scenes.items():
-        if scene_name != current_scene_name and target_scene_name is None:
-            target_scene_name = scene_name
+    for scene_id, scene in first_space.scenes.items():
+        if scene.name != current_scene_name and target_scene_name is None:
+            target_scene_name = scene.name
             target_scene_id = scene_id
 
     assert target_scene_name is not None, "Failed to get a secondary scene in space '{}'".format(first_space.name)

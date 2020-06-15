@@ -108,13 +108,13 @@ class NoonLine(NoonEntity):
         """Construct a Line from a JSON payload."""
 
         # Sanity - should be parsed
-        assert isinstance(json, Dict), "JSON is not parsed"
+        assert isinstance(json, Dict), "JSON is not parsed - expected a Dict but got {}".format(type(json))
 
         """Basics"""
         guid = json.get("guid", None)
-        name = json.get("displayName", None)
+        name = json.get("displayName", "Unknown")
 
-        if guid is None or name is None:
+        if guid is None:
             _LOGGER.debug("Invalid JSON payload: {}".format(json))
             raise NoonInvalidJsonError
         line_state = json.get("lineState", None)
